@@ -4,7 +4,7 @@
         ctx = canvas.getContext("2d"),
         windowWidth = window.innerWidth,
         windowHeight = window.innerHeight,
-        maxFlakes = windowWidth/2,
+        maxFlakes = windowHeight/2,
         angle = 0,
         flakesArr = [];
     
@@ -67,7 +67,16 @@
     function drawSnow() {
         ctx.clearRect(0, 0, windowWidth, windowHeight);
         ctx.beginPath();
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+        
+        // var image = new Image(5, 5);
+        //     image.src= './flake.svg';
+        //     ctx.drawImage(image, 100, 100);
+        
+        ctx.fillStyle = 'rgba(255, 255, 255, 1)';
+        ctx.shadowBlur = 8; 
+        ctx.shadowColor = "rgba(255, 255, 255, 0.5)";
+        // ctx.globalAlpha = Math.random();
+
         for(var i = 0; i < flakesArr.length; i++) {
             var el = flakesArr[i];
             ctx.moveTo(el.xCoordinate, el.yCoordinate);
@@ -80,14 +89,15 @@
     function redrawSnow() {
         windowWidth = window.innerWidth;
         windowHeight = window.innerHeight;
-        maxFlakes = windowWidth/2;
+        maxFlakes = windowHeight/2;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         flakesArr = [];
         initSnow();
     }
 
     initSnow();
-    var flakesInterval = setInterval(drawSnow, 50);
+    setInterval(drawSnow, 50);
+    // drawSnow();
 
     window.addEventListener('load', function() {
         initSnow();
