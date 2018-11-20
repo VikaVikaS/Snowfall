@@ -67,15 +67,10 @@
     function drawSnow() {
         ctx.clearRect(0, 0, windowWidth, windowHeight);
         ctx.beginPath();
-        
-        // var image = new Image(5, 5);
-        //     image.src= './flake.svg';
-        //     ctx.drawImage(image, 100, 100);
-        
+
         ctx.fillStyle = 'rgba(255, 255, 255, 1)';
         ctx.shadowBlur = 8; 
         ctx.shadowColor = "rgba(255, 255, 255, 0.5)";
-        // ctx.globalAlpha = Math.random();
 
         for(var i = 0; i < flakesArr.length; i++) {
             var el = flakesArr[i];
@@ -95,12 +90,9 @@
         initSnow();
     }
 
-    initSnow();
-    setInterval(drawSnow, 50);
-    // drawSnow();
-
     window.addEventListener('load', function() {
         initSnow();
+        setInterval(drawSnow, 50);
     })
 
     window.addEventListener('resize', function() {
